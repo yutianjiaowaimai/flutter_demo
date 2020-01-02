@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/draw.dart';
+import 'package:flutter_app/demo/gridview.dart';
+import 'package:flutter_app/demo/pageview.dart';
+import 'package:flutter_app/demo/draw.dart';
+import 'package:flutter_app/demo/list.dart';
+import 'package:flutter_app/demo/navigation.dart';
 import 'package:flutter_app/model/post.dart';
 
 void main() => runApp(MyApp());
@@ -22,10 +26,11 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
+  var _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(
           actions: <Widget>[
@@ -46,39 +51,20 @@ class Home extends StatelessWidget {
               Tab(icon: Icon(Icons.local_florist)),
               Tab(icon: Icon(Icons.local_airport)),
               Tab(icon: Icon(Icons.directions_bike)),
+              Tab(icon: Icon(Icons.audiotrack)),
             ],
           ),
         ),
         body: TabBarView(
           children: <Widget>[
-            Icon(Icons.local_florist, size: 168.0, color: Colors.black12),
-            Icon(Icons.local_airport, size: 168.0, color: Colors.black12),
-            Icon(Icons.directions_bike, size: 168.0, color: Colors.black12)
+            ListViewDemo(),
+            PageviewDemo(),
+            GridViewDemo(),
+            GridViewDemo(),
           ],
         ),
         drawer: Draw(),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          fixedColor: Colors.black,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text("首页"),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.camera),
-              title: Text("朋友圈"),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.chat),
-              title: Text("新闻"),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              title: Text("我的"),
-            ),
-          ],
-        ),
+        bottomNavigationBar: BottomNavigationDemo(),
       ),
     );
   }

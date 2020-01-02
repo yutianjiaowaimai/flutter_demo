@@ -72,4 +72,4 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
 
   assets:
-    - lib/drawable
+    - lib/drawable/
